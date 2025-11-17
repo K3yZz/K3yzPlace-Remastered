@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Navbar, Title } from '../components/homeComponents'
+import { Navbar, Title, Account, Preferences, Themes, Credits } from '../components/homeComponents'
 //
 import '../styles/Home.css'
 
@@ -20,11 +20,20 @@ function GamesPage() {
 }
 
 function SettingsPage() {
-  return <h2>Settings Page</h2>
+  return (
+    <>
+      <h2>Settings</h2>
+      <Account />
+      <Preferences />
+      <Themes />
+      <Credits />
+    </>
+  )
 }
 
+// Adds the navbar on every page
 export default function Home() {
-    return (
+  return (
     <Router>
       <Navbar />
       <Routes>

@@ -8,7 +8,7 @@ import './styles/index.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ErudaLoader />   {/* load Eruda */}
+    <ErudaLoader />
     <Home />
   </StrictMode>
 );

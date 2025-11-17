@@ -1,3 +1,5 @@
+//This adds the inspect tool
+
 import { useEffect } from "react";
 
 const ErudaLoader = () => {

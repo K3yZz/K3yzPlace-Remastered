@@ -4,6 +4,7 @@
   text-align: center;
 }
 
+/* Navbar Stuff */
 .navbar {
   width: 50vw;
   padding: 15px;
@@ -13,9 +14,50 @@
 .nav-list {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  height: 30px;
 }
 
 .nav-list a {
   color: inherit;
   text-decoration: none;
+}
+
+.nav-icon {
+  height: 36px;
+  width: auto;
+  filter: invert(); /* invert colors since they are black not white (maybe add setting for this?) */
+}
+
+#homeIcon {
+  height: 46px; /* Scale homeIcon more then the others to make everything even. */
+}
+
+/* Title Stuff */
+
+#titleText {
+  margin-bottom: 0; /* Reduce space between timeText and titleText */
+}
+
+#timeText {
+  margin-top: 0; /* Reduce space between timeText and titleText */
+  margin-bottom: 0; /* Reduce space between timeText and releaseNotesBtn */
+}
+
+#releaseNotesBtn {
+  margin-top: 10px; /* Increase space between timeText and releaseNotesBtn */
+}
+
+
+/* Settings stuff */
+
+.sectionTitle {
+  margin-bottom: 0; /* Remove the gap between the title and the other objects */
+}
+
+/* Using for react Icon but might be needed later */
+.creditsIcon {
+  height: 12px;
+  width: auto;
+  margin-left: 5px;
 }
