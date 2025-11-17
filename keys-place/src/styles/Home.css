@@ -1,14 +1,21 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
 .navbar {
-  width: 80vw;
+  width: 50vw;
+  padding: 15px;
+  border-radius: 0 0 30px 30px;
 }
 
 .nav-list {
-  gap: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-list a {
+  color: inherit;
+  text-decoration: none;
 }
