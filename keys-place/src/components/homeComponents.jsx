@@ -1,10 +1,14 @@
 //import react items
 import { Link } from 'react-router-dom'
 import Select from 'react-select'
+import { BlockPicker } from 'react-color';
 import { useState, useEffect } from 'react';
 
 //import styles
 import '../styles/Home.css'
+
+//import scripts
+import { setTheme } from './theme';
 
 //import images
 import homeIcon from '../assets/home.svg'
@@ -12,19 +16,45 @@ import appIcon from '../assets/apps.svg'
 import gameIcon from '../assets/game.svg'
 import settingsIcon from '../assets/settings.svg'
 import reactIcon from '../assets/React-icon.svg'
+import viteIcon from '../assets/Vitejs-logo.svg'
 
 //navbar (All pages)
 export function Navbar() {
   return (
     <nav className='navbar blur'>
       <div className='nav-list'>
-        <Link to="/"><img className='nav-icon' id='homeIcon' src={homeIcon} alt='home'></img></Link>
-        <Link to="/apps"><img className='nav-icon' src={appIcon} alt='apps'></img></Link>
-        <Link to="/games"><img className='nav-icon' src={gameIcon} alt='games'></img></Link>
-        <Link to="/settings"><img className='nav-icon' src={settingsIcon} alt='settings'></img></Link>
+        <Link to="/">
+          <img
+            className='nav-icon'
+            id='homeIcon'
+            src={homeIcon}
+            alt='home'
+          />
+        </Link>
+        <Link to="/apps">
+          <img
+            className='nav-icon'
+            src={appIcon}
+            alt='apps'
+          />
+        </Link>
+        <Link to="/games">
+          <img
+            className='nav-icon'
+            src={gameIcon}
+            alt='games'
+          />
+        </Link>
+        <Link to="/settings">
+          <img
+            className='nav-icon'
+            src={settingsIcon}
+            alt='settings'
+          />
+        </Link>
       </div>
     </nav>
-  )
+  );
 }
 
 //home page
@@ -88,16 +118,19 @@ export function Preferences() {
   return (
     <div>
       <h4 className='sectionTitle'>Preferences</h4>
+      <span>Military Time</span><input type='checkbox'></input>
+      <br></br>
+      <span>Burger Navbar</span><input type='checkbox'></input>
     </div>
   )
 }
 
-// CONTINUE HEREEE
 export function Themes() {
   // https://react-select.com/home
 
-  const options = [
+  const themeOptions = [
     { value: 'Creator\'s Pick', label: 'Creator\'s Pick' },
+    { value: 'Simple Dark', label: 'Simple Dark' },
     { value: 'Christmas', label: 'Christmas' },
     { value: 'Halloween', label: 'Halloween' },
     { value: 'Dr Pepper', label: 'Dr Pepper' },
@@ -106,9 +139,16 @@ export function Themes() {
     { value: 'Dark Blue', label: 'Dark Blue' },
     { value: 'Mint', label: 'Mint' },
     { value: '3 am latte', label: '3 am latte' },
-    { value: 'Im running out of ideas—eyesore', label: 'Im running out of ideas—eyesore' },
+    { value: 'eyesore', label: 'Im running out of ideas—eyesore' },
     { value: 'Image', label: 'Image' },
     { value: 'Custom', label: 'Custom' }
+  ]
+
+  const particleOptions = [
+    { value: 'Dots', label: 'Dots' },
+    { value: 'Swirls', label: 'Swirls' },
+    { value: 'Metaballs', label: 'Metaballs' },
+    { value: 'None', label: 'None' }
   ]
 
   const customStyles = {
@@ -117,9 +157,9 @@ export function Themes() {
       backgroundColor: '#f0f0f0',
       border: state.isFocused ? '1px solid black' : '1px solid #ccc',
       boxShadow: 'none',
-      position: 'relative',      // needed for absolute children
-      paddingLeft: 0,            // remove extra left padding
-      paddingRight: 0,           // remove extra right padding so we control spacing
+      position: 'relative',
+      paddingLeft: 0,
+      paddingRight: 0,
     }),
 
     // Make the area that normally holds the value a simple centered flexbox
@@ -185,15 +225,28 @@ export function Themes() {
 
   const [selectedOption, setSelectedOption] = useState(null);
 
+  const handleThemeChange = (option) => {
+    setSelectedOption(option);
+    if (option.value !== 'Custom' && option.value !== 'Image') {
+      setTheme(option.value);
+    }
+  };
+
   return (
     <div>
       <h4 className='sectionTitle'>Themes</h4>
-      <Select options={options} isSearchable={true} styles={customStyles} onChange={setSelectedOption} />
+      <Select options={themeOptions} isSearchable={true} styles={customStyles} onChange={handleThemeChange} />
+      {/* custom */}
       {selectedOption?.value === 'Custom' && (
-        <div style={{ marginTop: '10px', padding: '10px' }}>
-          You selected Custom! Displaying extra content here.
+        <div style={{ marginTop: '10px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+          <Select options={particleOptions} isSearchable={false} styles={customStyles} />
+          <BlockPicker />
+          <BlockPicker />
         </div>
+
+
       )}
+      {/* image */}
       {selectedOption?.value === 'Image' && (
         <div style={{ marginTop: '10px', padding: '10px' }}>
           You selected Image! Displaying extra content here.
@@ -205,12 +258,24 @@ export function Themes() {
 
 export function Credits() {
   return (
-    <div>
+    <div className="credits">
       <h4 className='sectionTitle'>Credits</h4>
-      <span>Created by Keys.</span>
+      <span>Made by Keys, Created with:</span>
       <br></br>
-      <span>Made with:</span>
-      <span> React<img className='creditsIcon' src={reactIcon}></img></span>
+      <span className="tooltip">
+        React <img className="creditsIcon" src={reactIcon} alt="React" />
+        <span className="tooltiptext">Extra Librarys: React-Color, React-Select, React-Router</span>
+      </span>
+      <span> + Vite <img className="creditsIcon" src={viteIcon} alt="Vite" /></span>
+    </div>
+  );
+}
+
+export function Description() {
+  return (
+    <div className='description'>
+      <h4 className='sectionTitle'>Description</h4>
+      <span>My goal for this new version is to have a lot of customization.</span>
     </div>
   )
 }

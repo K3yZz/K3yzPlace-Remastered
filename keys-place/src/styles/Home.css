@@ -26,38 +26,72 @@
 .nav-icon {
   height: 36px;
   width: auto;
-  filter: invert(); /* invert colors since they are black not white (maybe add setting for this?) */
+  filter: invert(var(--invert-icon));
 }
 
 #homeIcon {
-  height: 46px; /* Scale homeIcon more then the others to make everything even. */
+  height: 46px;
+  /* Scale homeIcon more then the others to make everything even. */
 }
 
 /* Title Stuff */
 
 #titleText {
-  margin-bottom: 0; /* Reduce space between timeText and titleText */
+  margin-bottom: 0;
+  /* Reduce space between timeText and titleText */
 }
 
 #timeText {
-  margin-top: 0; /* Reduce space between timeText and titleText */
-  margin-bottom: 0; /* Reduce space between timeText and releaseNotesBtn */
+  margin-top: 0;
+  /* Reduce space between timeText and titleText */
+  margin-bottom: 0;
+  /* Reduce space between timeText and releaseNotesBtn */
 }
 
 #releaseNotesBtn {
-  margin-top: 10px; /* Increase space between timeText and releaseNotesBtn */
+  margin-top: 10px;
+  /* Increase space between timeText and releaseNotesBtn */
 }
 
 
 /* Settings stuff */
 
 .sectionTitle {
-  margin-bottom: 0; /* Remove the gap between the title and the other objects */
+  margin-bottom: 0;
+  /* Remove the gap between the title and the other objects */
 }
 
-/* Using for react Icon but might be needed later */
 .creditsIcon {
-  height: 12px;
+  height: 16px;
   width: auto;
-  margin-left: 5px;
+  margin-left: 3px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

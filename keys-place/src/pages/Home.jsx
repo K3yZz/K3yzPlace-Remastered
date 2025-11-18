@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Navbar, Title, Account, Preferences, Themes, Credits } from '../components/homeComponents'
+import { Navbar, Title, Account, Preferences, Themes, Credits, Description } from '../components/homeComponents'
 //
 import '../styles/Home.css'
 
@@ -27,6 +27,7 @@ function SettingsPage() {
       <Preferences />
       <Themes />
       <Credits />
+      <Description />
     </>
   )
 }

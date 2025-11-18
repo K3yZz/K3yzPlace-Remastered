@@ -3,9 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --primary: #ff0000;
+  --secondary: #00ff00;
+  --background1: #d42222;
+  --background2: #311010;
+  --ui-color: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,6 +22,26 @@ body {
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  color: var(--ui-color);
+}
+
+button {
+  color: var(--ui-color);
+  background-color: var(--primary);
+  border: none;
+}
+
+button:hover {
+  background-color: var(--secondary);
+  transform: scale(1.03);
+}
+
+#backgroundCanvas {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-image: linear-gradient(to right, var(--background1), var(--background2));
 }
 
 /* Utility */
@@ -27,26 +49,5 @@ body {
   backdrop-filter: blur(3px);
   box-shadow: 0 8px 32px black;
   border: 1px solid white;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.3);
 }
-
-
-
-
-
-
-
-
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
